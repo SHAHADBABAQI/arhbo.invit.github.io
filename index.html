@@ -6,73 +6,68 @@
 <title>دعوة زفاف – شهد وأنس</title>
 <meta property="og:title" content="دعوة زفاف انس و شهد">   <!-- عنوان البطاقة في واتساب -->
 <meta property="og:description" content="يسعدنا دعوتكم لحضور حفل زفافنا">   <!-- النص تحت العنوان -->
-<meta property="og:image" content="https://babqi-wedding.netlify.app/images/envelope.png">   <!-- صورة الدعوة: ضعي صورة بهذا الاسم في مجلد images -->
+<meta property="og:image" content="https://babqi-wedding.netlify.app/images/envelope.png">   <!-- صورة البطاقة في واتساب (الأفضل JPG أقل من 300KB) -->
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<!-- <link href="https://script.google.com/macros/s/AKfycbzfPHlg4OaxLl5fsRe-mJTeztT4B-uDO9qOuOMLTjSLy2aqRbrhoJZC_26atyxoU8Y6/exec"> -->
 <link rel="preconnect" href="https://script.google.com" crossorigin>   <!-- يبدأ الاتصال بجوجل مبكراً -->
 <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>   <!-- عنوان الرد الفعلي لجوجل -->
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">   <!-- خطوط Amiri و Tajawal (احذفيه إذا تستخدمين خطوطك فقط) -->
+
 <style>
 /* =====================================================================
    التصميم (STYLES)
    - الألوان كلها في الأعلى تحت :root، غيّري هناك فقط.
-   - الصور تتحدد من قسم الإعدادات في الأسفل (IMAGES)، مو من هنا.
+   - الصور تتحدد من قسم الإعدادات في الأسفل (IMAGES و PAGES)، مو من هنا.
    ===================================================================== */
 :root {
   --bg:    #faf7f2;  /* لون الخلفية العامة (يظهر إذا الصورة ما انحطت) */
   --bg2:   #f3ede2;  /* لون خلفية القسم الأخير                          */
   --card:  #ffffff;
-  --ink:   #DABDBE;  /* لون الكتابة الأساسي (غيّريه فاتح إذا الورقة غامقة) */
+  --ink:   #DABDBE;  /* لون الكتابة الأساسي                              */
   --mute:  #7a756c;  /* لون الكتابة الباهتة                              */
-  --gold:  #A66166;  /* اللون الذهبي: الخطوط والأوقات                   */
+  --gold:  #A66166;  /* اللون المميز: الخطوط والأوقات وزر الاعتذار     */
   --sage:  #757C5A;  /* لون زر "سأحضر"                                  */
   --line:  #e8e1d4;  /* الحدود الرفيعة                                  */
-  --cover-text: #A66166;  /* لون أسماء العرسان فوق الظرف (حسب رسمتك)   */
-  --layer-fit: fill;        /* طريقة عرض صور الطبقات على الجوال:
-                               "fill"    = الصورة كاملة تملأ الصفحة (الأفضل لرسمة بقياس الجوال)
-                               "contain" = كاملة بدون تمدد (قد يظهر لون الخلفية على الأطراف)
-                               "cover"   = تغطي الصفحة لكن تُقص أطرافها */
-  --space-top:    110px;    /* مسافة بين أعلى القسم والكتابة (زيديها إذا الورد يغطي الكتابة) */
+  --cover-text: #A66166;  /* لون كتابة صفحة الظرف                       */
+  --layer-fit: fill;        /* عرض صور الطبقات: "fill" تملأ الصفحة كاملة | "contain" كاملة بدون تمدد | "cover" مع قص الأطراف */
+  --space-top:    110px;    /* مسافة بين أعلى القسم والكتابة */
   --space-bottom: 110px;    /* مسافة بين أسفل القسم والكتابة */
-  --flower-width: 100%;     /* عرض صورتي الورد: 100% = بعرض الشاشة، قلّليها لتصغيرهما */
   --small-flower-width: 90px; /* عرض الوردة الصغيرة تحت الأسماء */
+  --peek: 40px;             /* مقدار ظهور الصفحة التالية أسفل الشاشة (اكتبي 0px لإلغائه) */
 }
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {  /* ألوان الجوالات بالوضع الليلي */
   :root { --bg:#171613; --bg2:#1d1b17; --card:#211f1b; --ink:#DABDBE; --mute:#a39c8e; --gold:#A66166; --sage:#8fa691; --line:#37332b; }
 }
 
 /* ---------- خطوطك الخاصة ----------
-   1) أنشئي مجلد اسمه fonts بجانب index.html
-   2) ضعي فيه ملف الخط وسمّيه:  title  (خط العناوين والأسماء)  و/أو  body  (خط الكتابة العادية)
-      الصيغ المقبولة: ttf أو otf أو woff أو woff2   مثال: fonts/title.ttf
-   إذا ما وضعتِ ملفاً، يبقى الخط الافتراضي ولا تنكسر الصفحة. */
+   ضعي ملف الخط في مجلد fonts باسم title (العناوين) و/أو body (النصوص). الصيغ: ttf أو otf أو woff أو woff2 */
 @font-face { font-family: "MyDisplay"; font-display: swap;
   src: url("fonts/title.woff2") format("woff2"), url("fonts/title.woff") format("woff"), url("fonts/title.ttf") format("truetype"), url("fonts/title.otf") format("opentype"); }
 @font-face { font-family: "MyBody"; font-display: swap;
   src: url("fonts/body.woff2") format("woff2"), url("fonts/body.woff") format("woff"), url("fonts/body.ttf") format("truetype"), url("fonts/body.otf") format("opentype"); }
-
 :root {
   --font-display: "MyDisplay", Amiri, Georgia, serif;              /* خط العناوين والأسماء والأرقام */
   --font-body:    "MyBody", Tajawal, system-ui, sans-serif;        /* خط الكتابة العادية */
 }
 
 /* ---------- أساسيات ---------- */
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
-html.locked, html.locked body { overflow: hidden; height: 100%; } /* يمنع التمرير قبل فتح الظرف */
+* { box-sizing: border-box; }                                       /* الحدود والمسافات داخل حجم العنصر */
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }    /* تمرير ناعم بين الأقسام */
+html.locked, html.locked body { overflow: hidden; height: 100%; }   /* يمنع التمرير قبل فتح الظرف */
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-weight: 300; line-height: 1.9; }
-h1, h2, .serif { font-family: var(--font-display); font-weight: 400; }
+h1, h2, .serif { font-family: var(--font-display); font-weight: 400; }   /* خط العناوين */
 
-/* ---------- القسم (كل قسم يملأ الشاشة) ---------- */
-.section { min-height: 100svh; scroll-snap-align: start; position: relative; display: flex; flex-direction: column;
-           align-items: center; justify-content: center; text-align: center; padding: var(--space-top) 24px var(--space-bottom); }
-.section.thin { min-height: auto; padding: 34px 20px; scroll-snap-align: none; } /* القسم النحيف (العدّ التنازلي) */
+/* ---------- القسم: كل صفحة تملأ الشاشة (ناقص --peek ليظهر طرف التالية) ---------- */
+.section { scroll-snap-align: start; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.section:not(.thin) { height: calc(100svh - var(--peek)); min-height: 0;                                            /* الصفحة بحجم ثابت ولا تتمدد */
+  padding: min(var(--space-top), 8svh) 24px min(var(--space-bottom), 8svh); }                                       /* المسافات تصغر تلقائياً في الجوالات القصيرة */
+.section.thin { min-height: auto; padding: 34px 20px; scroll-snap-align: none; }                                    /* القسم النحيف (العدّ التنازلي والأخير) */
 
 /* ---------- عناصر صغيرة مشتركة ---------- */
-.label   { font-size: 13px; color: var(--gold); }
+.label   { font-size: 13px; color: var(--gold); }                   /* العنوان الصغير فوق العناوين */
 .muted   { color: var(--mute); }
-.divider { width: 60px; height: 1px; background: var(--gold); margin: 20px auto; }
-h2       { font-size: clamp(34px, 9vw, 46px); margin: 6px 0 4px; }
+.divider { width: 60px; height: 1px; background: var(--gold); margin: 20px auto; }   /* الخط الفاصل */
+h2       { font-size: clamp(34px, 9vw, 46px); margin: 6px 0 4px; }  /* حجم العناوين */
 .small   { font-size: 14px; color: var(--mute); margin-top: 16px; }
 .link    { color: var(--gold); cursor: pointer; text-decoration: underline; background: none; border: 0; font: inherit; padding: 0; }
 
@@ -81,153 +76,123 @@ h2       { font-size: clamp(34px, 9vw, 46px); margin: 6px 0 4px; }
    ===================================================================== */
 .cover { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center;
          justify-content: space-between; text-align: center; padding: 7vh 24px 6vh; overflow: hidden;
-         background: var(--bg);   /* الصور تأتي من الطبقات (PAGES) */
+         background: var(--bg);                                      /* الصور تأتي من الطبقات (PAGES) */
          transition: transform 1.1s cubic-bezier(.7,0,.2,1), opacity 1.1s; }
-.cover.is-opening { transform: translateY(-100%); opacity: 0; }       /* حركة فتح الدعوة */
+.cover.is-opening { transform: translateY(-100%); opacity: 0; }      /* حركة فتح الدعوة */
 .cover.is-opening .envelope { transform: scale(1.15); }
 
-.inviter       { animation: fadeUp 1s .3s both; }                    /* اسم الداعي (يظهر بعد دخول الأسماء) */
+.inviter       { opacity: 0; }                                       /* اسم الداعي مخفي حتى يصل (من الرابط أو الشيت) */
+.inviter.show  { opacity: 1; animation: fadeUp .5s both; }           /* ثم يظهر خلال نصف ثانية */
 .inviter-name  { font-family: var(--font-display); font-size: 30px; font-weight: 700; color: var(--cover-text); line-height: 1.5; }
-.inviter-line  { font-size: 16px; color: var(--mute); }
+.inviter-line  { font-size: 16px; color: var(--mute); }              /* عبارة قبل وبعد الاسم */
 
-/* اسم الداعي أسرع + عبارة الفتح تظهر بعد ظهور الاسم */
-.inviter.show { animation: fadeUp .5s both; }                          /* ظهور الاسم خلال نصف ثانية بدل ثانية وزيادة */
-.open-hint { animation: none; opacity: 0; }                            /* العبارة مخفية حتى يظهر اسم الداعي */
-.cover.ready .open-hint { opacity: .7; animation: fadeUp .6s .5s both; }   /* ثم تظهر بعده بنصف ثانية */
-
-.envelope { position: relative; width: min(70vw, 700px); aspect-ratio: 4 / 3; cursor: pointer;
-            background: var(--img-envelope, none) center / contain no-repeat;   /* صورة الظرف */
+.envelope { position: relative; width: min(70vw, 700px); aspect-ratio: 4 / 3; cursor: pointer;     /* مساحة صورة الظرف */
+            background: var(--img-envelope, none) center / contain no-repeat;
             display: flex; align-items: center; justify-content: center; transition: transform 1.1s ease; }
-.cover-names { display: flex; align-items: center; justify-content: center; gap: .7em; white-space: nowrap;   /* الاسمين بجانب بعض */
-               font-family: var(--font-display); font-weight: 700; color: var(--cover-text); line-height: 1.2;
-               font-size: clamp(30px, 9vw, 56px); }                                                         /* حجم الأسماء: غيّري الأرقام لتكبير أو تصغير */
-.name-bride { animation: fromTop  1.3s .3s  cubic-bezier(.2,.8,.2,1) both; }  /* اسم العروس: ينزل من فوق */
-.name-groom { animation: fromSide 1.3s .9s  cubic-bezier(.2,.8,.2,1) both; }  /* اسم العريس: يدخل من الجنب */
 
-.open-hint { animation: fadeUp 1s 3s both; border: 0; background: none; padding: 0; cursor: pointer;     /* نص صغير بدون إطار */
-             color: var(--cover-text); opacity: .7; font: 300 12px var(--font-body); }                  /* غيّري 12px لتكبير أو تصغير الخط */
+.open-hint { border: 0; background: none; padding: 0; cursor: pointer; color: var(--cover-text); opacity: 0; font: 300 12px var(--font-body); }   /* عبارة اضغط لفتح الدعوة: مخفية حتى يظهر الاسم */
+.cover.ready .open-hint { opacity: .7; animation: fadeUp .6s .5s both; }   /* تظهر بعد الاسم بنصف ثانية */
 
-@keyframes fromTop  { from { opacity: 0; transform: translateY(-80vh); } }
-@keyframes fromSide { from { opacity: 0; transform: translateX(-90vw); } }
-@keyframes fadeUp   { from { opacity: 0; transform: translateY(14px); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } }   /* حركة ظهور من تحت لفوق */
 
 /* =====================================================================
-   القسم 1: الدعوة + التأكيد (خلفية الورق)
+   القسم 1: الدعوة + التأكيد
    ===================================================================== */
 .bismillah  { font-family: var(--font-display); font-size: 20px; color: var(--gold); }
 .dear       { font-size: 17px; color: var(--mute); margin-top: 18px; }
 .guest-name { font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 9vw, 44px); line-height: 1.3; }
 .lead       { font-size: 16px; color: var(--mute); max-width: 400px; margin: 0 auto; }
-h1          { font-size: clamp(50px, 14vw, 80px); line-height: 1.2; margin: 6px 0 0; }
-h1 em       { color: var(--gold); font-style: normal; font-size: .5em; padding: 0 .3em; }
+h1          { font-size: clamp(50px, 14vw, 80px); line-height: 1.2; margin: 6px 0 0; }     /* أسماء العرسان */
+h1 em       { color: var(--gold); font-style: normal; font-size: .5em; padding: 0 .3em; }  /* الحرف بين الاسمين */
 .date       { font-size: 26px; font-family: var(--font-display); }
 
-.buttons  { display: grid; gap: 8px; margin: 18px auto 0; max-width: 240px; width: 100%; }
-.btn      { border: 1px solid var(--gold); color: var(--ink); background: transparent; padding: 9px 16px; border-radius: 99px; font: 500 15px var(--font-body); cursor: pointer; }
-.btn-yes  { background: var(--sage); border-color: var(--sage); color: #fff; }
-.btn-no   { border-color: var(--line); color: var(--mute); }
+.buttons  { display: grid; gap: 6px; margin: 14px auto 0; max-width: 190px; width: 100%; }   /* عرض الزرّين: صغّري الرقم لتصغيرهما */
+.btn      { border: 1px solid var(--gold); color: var(--ink); background: transparent; padding: 8px 14px; border-radius: 99px; font: 500 13px var(--font-body); cursor: pointer; }   /* حجم الزر والخط */
+.btn-yes  { background: var(--sage); border-color: var(--sage); color: #fff; }   /* زر الحضور */
+.btn-no   { background: var(--gold); border-color: var(--gold); color: #fff; }   /* زر الاعتذار: ملوّن */
 .btn:disabled { opacity: .5; }
 .seats    { display: inline-block; margin-top: 8px; font-size: 14px; color: var(--gold); }
 .result   { font-size: 30px; margin-top: 8px; }
 
-.qr-box   { margin-top: 4px; }                                                      /* منطقة صورة الكود: صغّري الرقم لرفعها أكثر (يقبل رقم سالب مثل -10px) */
-.qr-box img { width: 100px; max-width: 33vw; padding: 0; border: 0; border-radius: 0; }   /* بدون إطار */
-.qr-title { font-family: var(--font-display); font-size: 18px; color: var(--gold); }
-.qr-note  { max-width: 380px; margin: 4px auto 0; font-size: 13px; color: var(--mute); }
+.qr-box   { margin-top: 4px; }                                                   /* منطقة صورة الكود */
+.qr-box img { width: 100px; max-width: 33vw; padding: 0; border: 0; border-radius: 0; }   /* صورة الكود */
+.qr-note  { max-width: 380px; margin: 4px auto 0; font-size: 13px; color: var(--mute); }  /* الجملة تحت الكود */
+
+.section > .scroll-hint { position: absolute; bottom: 12px; left: 0; right: 0; margin: 0 auto; width: 34px; height: 34px;
+  color: var(--ink); opacity: .85; animation: bob 2s ease-in-out infinite; }     /* سهم يدل على وجود صفحات تحت */
+.scroll-hint svg { width: 100%; height: 100%; }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(7px); } }   /* حركة السهم */
+
 /* =====================================================================
    القسم 2: العدّ التنازلي (نحيف)
    ===================================================================== */
-.count-row  { display: flex; gap: 14px; justify-content: center; margin-top: 8px;}
+#countdown  { background: #343824; }                                              /* لون خلفية العدّ */
+.count-row  { display: flex; gap: 14px; justify-content: center; margin-top: 8px; }
 .count-item { min-width: 62px; }
 .count-num  { display: block; font-family: var(--font-display); font-size: 36px; line-height: 1.2; }
 .count-lbl  { font-size: 13px; opacity: .85; }
-#countdown{ background:#343824;}
 
 /* =====================================================================
-   القسم 3: مراسم الحفل (خلفية خارجية)
+   القسم 3: مراسم الحفل
    ===================================================================== */
 .timeline  { max-width: 420px; width: 100%; margin: 24px auto 8px; text-align: right; }
-.event     { display: grid; grid-template-columns: 86px 1fr; gap: 14px; }
-.event-time  { font-family: var(--font-display); font-size: 24px; color: var(--gold); line-height: 1.5; }
+.event     { display: grid; grid-template-columns: 110px 1fr; gap: 14px; }       /* 110px = عرض عمود الوقت */
+.event-time  { font-family: var(--font-display); font-size: 24px; color: var(--gold); line-height: 1.5; }   /* حجم خط الوقت */
 .event-body  { border-inline-start: 1px solid var(--gold); padding-inline-start: 22px; padding-bottom: 30px; position: relative; }
-.event-body::before { content: ""; position: absolute; inset-inline-start: -6px; top: 9px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold); }
+.event-body::before { content: ""; position: absolute; inset-inline-start: -6px; top: 9px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold); }   /* النقطة الذهبية */
 .event:last-child .event-body { padding-bottom: 0; border-color: transparent; }
 .event-title { display: block; font-family: var(--font-display); font-size: 24px; font-weight: 700; line-height: 1.5; }
 .event-text  { font-size: 15px; opacity: .85; }
 .venue       { margin-top: 20px; }
 .venue strong { display: block; font-weight: 500; }
-.pill        { display: inline-block; margin-top: 12px; border: 1px solid var(--gold); color: inherit; padding: 9px 26px; border-radius: 99px; text-decoration: none; font-size: 15px; }
-/* #program {background:#343824;} */
-/* =====================================================================
-   القسم 4: الرسالة الأخيرة
-   ===================================================================== */
-#closing       { background: var(--bg2); padding: 24px 20px; }  /* لون خلفية الرسالة الأخيرة (تحت الطبقات) */
-.closing-text  { max-width: 420px; font-size: 19px; line-height: 2.1; }
-.closing-names { font-family: var(--font-display); font-size: 28px; color: var(--gold); margin-top: 10px; }
+.pill        { display: inline-block; margin-top: 12px; border: 1px solid var(--gold); color: inherit; padding: 9px 26px; border-radius: 99px; text-decoration: none; font-size: 15px; }   /* زر الموقع */
+.section > .notices { display: flex; justify-content: center; gap: 30px; margin-top: auto; padding-top: 18px; }   /* الملاحظات في أسفل الصفحة */
+.notice { display: flex; flex-direction: column; align-items: center; gap: 6px; max-width: 120px; font-size: 13px; line-height: 1.5; opacity: .9; }   /* أيقونة فوق النص */
+.notice svg { width: 28px; height: 28px; }                                       /* حجم الأيقونة */
 
 /* =====================================================================
-   التنقل (النقاط الجانبية) + الحركة
+   القسم 4: الرسالة الأخيرة (نحيف)
+   ===================================================================== */
+#closing       { background: var(--bg2); padding: 24px 20px; }                   /* لون خلفية الرسالة الأخيرة */
+.closing-text  { max-width: 420px; font-size: 19px; line-height: 2.1; }
+.closing-names { font-family: var(--font-display); font-size: 28px; color: var(--gold); margin-top: 10px; }
+.small-flower  { display: block; width: var(--small-flower-width); margin: 10px auto 0; }   /* الوردة الصغيرة */
+
+/* =====================================================================
+   التنقل (النقاط الجانبية) + طبقات الصور + الحركة
    ===================================================================== */
 .dots   { position: fixed; left: 14px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 5; }
 .dots a { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--gold); background: rgba(255,255,255,.4); transition: .3s; }
-.dots a.active { background: var(--gold); transform: scale(1.3); }
+.dots a.active { background: var(--gold); transform: scale(1.3); }               /* النقطة الحالية */
 
-/* =====================================================================
-   طبقات الصور: حتى 4 طبقات لكل صفحة (الطبقة 1 الأسفل ... الطبقة 4 الأعلى)، والكتابة فوقها كلها
-   ===================================================================== */
-.layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: var(--layer-fit);   /* الصورة تغطي الصفحة كلها */
-         pointer-events: none; opacity: 0; transition: opacity 1.2s ease, transform 1.2s ease; }    /* مخفية في البداية ثم تظهر بنعومة */
-.layer[data-from="top"]    { transform: translateY(-40px); }   /* تدخل من فوق */
-.layer[data-from="bottom"] { transform: translateY(40px); }    /* تدخل من تحت */
-.layer[data-from="left"]   { transform: translateX(-40px); }   /* تدخل من اليسار */
-.layer[data-from="right"]  { transform: translateX(40px); }    /* تدخل من اليمين */
+/* طبقات الصور: حتى 4 لكل صفحة (1 الأسفل ... 4 الأعلى)، والكتابة فوقها كلها */
+.layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: var(--layer-fit);
+         pointer-events: none; opacity: 0; transition: opacity 1.2s ease, transform 1.2s ease; }   /* مخفية ثم تظهر بنعومة */
+.layer[data-from="top"]    { transform: translateY(-40px); }                     /* تدخل من فوق */
+.layer[data-from="bottom"] { transform: translateY(40px); }                      /* تدخل من تحت */
+.layer[data-from="left"]   { transform: translateX(-40px); }                     /* تدخل من اليسار */
+.layer[data-from="right"]  { transform: translateX(40px); }                      /* تدخل من اليمين */
 .section.visible > .layer, .cover.visible > .layer { opacity: 1; transform: none; }   /* تظهر مع ظهور الصفحة */
-.section::before, .cover::before { content: ""; position: absolute; inset: 0; background: #1e1f1f; opacity: var(--overlay, 0); z-index: 15; pointer-events: none; }  /* تعتيم فوق الطبقة 1 فقط */
+.section::before, .cover::before { content: ""; position: absolute; inset: 0; background: #1e1f1f; opacity: var(--overlay, 0); z-index: 15; pointer-events: none; }   /* تعتيم فوق الطبقة 1 (من 0 إلى 1) */
 .section > :not(.layer), .cover > :not(.layer) { position: relative; z-index: 50; }   /* الكتابة فوق كل الطبقات */
-.small-flower { display: block; width: var(--small-flower-width); margin: 10px auto 0; }  /* الوردة الصغيرة تحت الأسماء */
 
-
-/* أي عنصر عليه class="reveal" يظهر بحركة لما يوصله المتصفح. style="--order:2" يأخّره شوي */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; transition-delay: calc(var(--order, 0) * .14s); }
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; transition-delay: calc(var(--order, 0) * .14s); }   /* عنصر يظهر بحركة (--order يأخّره) */
 .section.visible .reveal { opacity: 1; transform: none; }
 .fade-in { animation: fadeUp .8s ease both; }
-@media (prefers-reduced-motion: reduce) { /* لمن يفضّل بدون حركات */
+@media (prefers-reduced-motion: reduce) {                                        /* لمن يفضّل بدون حركات */
   html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; }
   .cover *, .cover { animation: none !important; }
-  .layer { opacity: 1 !important; transform: none !important; transition: none !important; }  /* بدون حركة للطبقات */
+  .layer { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
-/* ثبات حجم الصفحات + ظهور اسم الداعي */
-.section:not(.thin) { height: 100svh; min-height: 0;   /* الصفحة بحجم الشاشة بالضبط ولا تتمدد */
-  padding-top: min(var(--space-top), 8svh); padding-bottom: min(var(--space-bottom), 8svh); }   /* المسافات تصغر تلقائياً في الجوالات القصيرة */
-.inviter { opacity: 0; animation: none; }              /* اسم الداعي مخفي حتى يصل من الشيت */
-.inviter.show { opacity: 1; animation: fadeUp 1s .1s both; }   /* ثم يظهر بنعومة */
-
-/* تلميح التمرير: طرف الصفحة التالية يظهر + سهم متحرك */
-:root { --peek: 40px; }                                        /* مقدار ظهور الصفحة التالية أسفل الشاشة (اكتبي 0px لإلغائه) */
-.section:not(.thin) { height: calc(100svh - var(--peek)); }    /* الصفحة أقصر قليلاً من الشاشة فيظهر طرف التالية */
-.section > .scroll-hint { position: absolute; bottom: 12px; left: 0; right: 0; margin: 0 auto; width: 34px; height: 34px;
-  color: var(--ink); opacity: .85; animation: bob 2s ease-in-out infinite; }   /* سهم ينزل ويطلع بلطف */
-.scroll-hint svg { width: 100%; height: 100%; }
-@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
-/* ملاحظات أسفل صفحة المراسم */
-.section > .notices { display: flex; justify-content: center; gap: 60px; margin-top: auto; padding-top: 18px; }   /* تنزل لأسفل الصفحة */
-.notice { display: flex; flex-direction: column; align-items: center; gap: 6px; max-width: 120px; font-size: 10px; line-height: 1.5; opacity: .9; }   /* أيقونة فوق النص */
-.notice svg { width: 14px; height: 14px; }                     /* حجم الأيقونة */
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================================
-     هيكل الصفحة: النصوص تتعبى تلقائياً من قسم الإعدادات في الأسفل
-     ===================================================================== -->
-
 <!-- صفحة الظرف: أول شي يظهر -->
 <div class="cover" id="cover">
   <div class="inviter" id="inviter"></div>                 <!-- اسم الداعي والعبارة -->
-  <div class="envelope" id="envelope" role="button" tabindex="0">
-    <!-- لا توجد أسماء فوق الظرف: الضغط على الظرف يفتح الدعوة -->
-  </div>
+  <div class="envelope" id="envelope" role="button" tabindex="0"></div>   <!-- صورة الظرف (الضغط عليها يفتح الدعوة) -->
   <button class="open-hint" id="openHint"></button>        <!-- عبارة اضغط لفتح الدعوة -->
 </div>
 
@@ -246,7 +211,7 @@ h1 em       { color: var(--gold); font-style: normal; font-size: .5em; padding: 
   <div class="divider reveal" style="--order:5"></div>
   <h2 class="reveal" style="--order:5" id="replyTitle"></h2>
   <div class="reveal" style="--order:6; width:100%" id="replyBox"></div>
-    <a class="scroll-hint" href="#countdown" aria-label="التالي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>   <!-- سهم يدل على وجود صفحات تحت (اضغطيه ينقل للتالية) -->
+  <a class="scroll-hint" href="#countdown" aria-label="التالي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>   <!-- سهم التمرير -->
 </section>
 
 <!-- 2) العدّ التنازلي (قسم نحيف) -->
@@ -262,14 +227,14 @@ h1 em       { color: var(--gold); font-style: normal; font-size: .5em; padding: 
   <div class="divider reveal" style="--order:2"></div>
   <div class="timeline" id="timeline"></div>
   <div class="venue reveal" style="--order:6" id="venue"></div>
-    <div class="notices reveal" style="--order:7" id="notices"></div>   <!-- الملاحظات أسفل الصفحة (أيقونة + نص) -->
+  <div class="notices reveal" style="--order:7" id="notices"></div>   <!-- الملاحظات أسفل الصفحة (أيقونة + نص) -->
 </section>
 
 <!-- 4) الرسالة الأخيرة (تتغير حسب رد الضيف) -->
 <section class="section thin" id="closing">
   <p class="closing-text reveal" id="closingText"></p>
   <div class="closing-names reveal" style="--order:1" id="closingNames"></div>   <!-- أسماء العرسان -->
-   <img class="small-flower reveal" style="--order:2" id="smallFlower" alt="" onerror="this.style.display='none'">
+  <img class="small-flower reveal" style="--order:2" id="smallFlower" alt="" onerror="this.style.display='none'">   <!-- الوردة الصغيرة -->
   <div class="brand reveal" style="--order:3">arhbo.invite</div>   <!-- اسم العلامة التجارية -->
 </section>
 
@@ -281,8 +246,8 @@ h1 em       { color: var(--gold); font-style: normal; font-size: .5em; padding: 
 
 // ---- صور أخرى ----
 const IMAGES = {
-  envelope: "images/envelope.png",            // رسمة الظرف (يفضل PNG شفاف)
-  qr:       "images/QR.png",        // صورة الكود (نفس الصورة لكل الضيوف)
+  envelope: "images/envelope.png",   // رسمة الظرف (يفضل PNG شفاف)
+  qr:       "images/QR.png",         // صورة الكود (نفس الصورة لكل الضيوف)
 };
 const SMALL_FLOWER = "images/flower-small.png";   // وردة صغيرة تحت الأسماء في آخر صفحة (اتركيها "" لإخفائها)
 
@@ -294,15 +259,15 @@ const SMALL_FLOWER = "images/flower-small.png";   // وردة صغيرة تحت 
 // textColor: لون كتابة الصفحة ("" = اللون العادي)
 const PAGES = {
   cover: {                                   // صفحة الظرف
-    layers: ["", "", "", "",""],
-    overlay: 2, textColor: "",
+    layers: ["", "", "", ""],
+    overlay: 1, textColor: "",
   },
   invitation: {                              // الدعوة والتأكيد
     layers: ["images/greenbackground.png", "images/leaves.png", "images/Flowers.png", ""],
     overlay: 0, textColor: "",
   },
   countdown: {                               // العدّ التنازلي (صفحة نحيفة)
-    layers: ["", "", "",""],
+    layers: ["", "", "", ""],
     overlay: 0, textColor: "#ffffff",
   },
   program: {                                 // مراسم الحفل
@@ -315,20 +280,20 @@ const PAGES = {
   },
 };
 
-// ---- الداعي: يظهر تحت الظرف في الصفحة الأولى ----
+// ---- الداعي: يُستخدم فقط كنص احتياطي، والأصل يأتي من الشيت ----
 const INVITER = {
-  before: "تتشرف",            // عبارة قبل الاسم   ← اكتبي عبارتك
-  name:   "السيدة سعاد بامرعي",       // اسم الداعي        ← اكتبي الاسم
-  after:  "لدعوتكم لحضور حفل زفاف ابنها أنس بابقي",  // عبارة بعد الاسم ← اكتبي عبارتك
+  before: "تتشرف",                                    // عبارة قبل الاسم
+  name:   "السيدة ابتسام سعيد باحكم",                 // اسم الداعي
+  after:  "لدعوتكم لحضور حفل زفاف ابنها أنس بابقي",   // عبارة بعد الاسم
 };
 
 // ---- العرسان والتاريخ والمكان ----
 const WEDDING = {
   bride:    "انس",
   groom:    "شهد",
-  joiner:   "و",   // الحرف بين الاسمين في الدعوة وفي الرسالة الأخيرة (اتركيه "" لحذفه)
-  date:     "السبت ٢٦ ديسمبر ٢٠٢٦",                // التاريخ كما يظهر للضيف
-  dateTime: "2026-12-26T21:00:00+03:00",            // موعد البداية للعدّ التنازلي (السنة-الشهر-اليوم T الساعة، بتوقيت الرياض +03:00)
+  joiner:   "و",                                      // الحرف بين الاسمين (اتركيه "" لحذفه)
+  date:     "السبت ٢٦ ديسمبر ٢٠٢٦",                   // التاريخ كما يظهر للضيف
+  dateTime: "2026-12-26T21:00:00+03:00",              // موعد العدّ التنازلي (السنة-الشهر-اليوم T الساعة، بتوقيت الرياض +03:00)
   venue:    "قاعة لافيورا للمناسبات",
   city:     "الرياض",
   mapUrl:   "https://share.google/CuyT0vH0xXBNzKlj7", // اتركيه "" لإخفاء زر الموقع
@@ -339,6 +304,12 @@ const PROGRAM = [
   { time: "٩:٠٠ مساءً",  title: "استقبال الضيوف", text: "يسعدنا استقبالكم وتشريفكم" },
   { time: "١٢:٠٠ مساءً", title: "زفة العروس",    text: "زفة العروس وأجمل اللحظات" },
   { time: "١:٣٠ صباحا", title: "العشاء",         text: "مأدبة عشاء على شرفكم" },
+];
+
+// ---- ملاحظات أسفل صفحة المراسم (أيقونة + نص): غيّري النص أو احذفي سطراً. icon: "kids" أو "camera" ----
+const NOTICES = [
+  { icon: "kids",   text: "جنة الأطفال منازلهم" },
+  { icon: "camera", text: "يمنع التصوير" },
 ];
 
 // ---- كل الكلام الظاهر في الصفحة ----
@@ -353,14 +324,11 @@ const TEXT = {
   replyTitle:   "تأكيد الحضور",
   yesButton:    "سأحضر بإذن الله",
   noButton:     "أعتذر عن الحضور",
-  thanksYes:    "بانتظارك بكل شوق",
   thanksNo:     "سنفتقدك",
-  received:     "تم استلام ردك.",
   thankYou:     "شكراً لإبلاغنا.",
   change:       "تغيير الرد",
   seats:        n => `الدعوة تشمل ${toArabicDigits(n)} أشخاص`,
   // الكود (يظهر فقط لمن اختار الحضور)
-  qrTitle:      "رمز الدخول",
   qrNote:       " أظهري الكود عند الدخول.",
   // العدّ التنازلي
   countdownLabel: "متبقي على الزفاف",
@@ -371,8 +339,8 @@ const TEXT = {
   programTitle: "مراسم الحفل",
   mapButton:    "عرض الموقع",
   // الرسالة الأخيرة
-  closingWaiting:  "نتشرف بحضوركم وننتظركم بكل شوق.",     // لمن حضر أو لم يرد بعد
-  closingDeclined: " حزينين لأنكم ما راح تكونون معنا، ونتمنى لكم كل الخير.", // لمن اعتذر
+  closingWaiting:  "نتشرف بحضوركم وننتظركم بكل شوق.",                          // لمن حضر أو لم يرد بعد
+  closingDeclined: " حزينين لأنكم ما راح تكونون معنا، ونتمنى لكم كل الخير.",    // لمن اعتذر
   // رسائل الأخطاء
   needLink: "فضلاً افتح رابط دعوتك الخاصة لتأكيد الحضور.",
   notFound: "لم نجد هذه الدعوة، تأكد من الرابط.",
@@ -386,15 +354,6 @@ const API_URL = "https://script.google.com/macros/s/AKfycbwLVsGx_XKoX6-gpX8ZQfHs
 // ---- الكلمات المحفوظة في الشيت (لازم تطابق Code.gs) ----
 const STATUS_YES = ["حاضر", "Attending"];
 const STATUS_NO  = ["معتذر", "Declined"];
-// ---- ملاحظات أسفل صفحة المراسم (أيقونة + نص): غيّري النص أو احذفي سطراً. icon: "kids" أو "camera" ----
-const NOTICES = [
-  { icon: "kids",   text: "جنة الأطفال منازلهم" },
-  { icon: "camera", text: "يمنع التصوير" },
-];
-const ICONS = {   // الأيقونات الجاهزة (لا تحتاجين تعدّلينها)
-  kids:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="2.6"/><path d="M8 20v-4a4 4 0 0 1 8 0v4"/><path d="M3 3l18 18"/></svg>`,
-  camera: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/><path d="M3 3l18 18"/></svg>`,
-};
 
 
 /* =====================================================================
@@ -402,51 +361,51 @@ const ICONS = {   // الأيقونات الجاهزة (لا تحتاجين تع
    ===================================================================== */
 const $ = id => document.getElementById(id);                  // اختصار لإيجاد عنصر بالـ id
 
+const ICONS = {   // الأيقونات الجاهزة للملاحظات
+  kids:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="2.6"/><path d="M8 20v-4a4 4 0 0 1 8 0v4"/><path d="M3 3l18 18"/></svg>`,
+  camera: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/><path d="M3 3l18 18"/></svg>`,
+};
+
 function toArabicDigits(n) {                                  // يحوّل 123 إلى ١٢٣
   return String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
 }
 function safe(text) {                                         // يجعل النص آمن داخل HTML
   return String(text ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 }
-const guestCode = new URLSearchParams(location.search).get("g") || ""; // رمز الضيف من الرابط ?g=...
+const guestCode = new URLSearchParams(location.search).get("g") || "";    // رمز الضيف من الرابط ?g=...
+const urlInviter = new URLSearchParams(location.search).get("i") || "";   // اسم الداعي من الرابط ?i=... (يظهر فوراً)
 
 
 /* =====================================================================
    3) تعبئة الصفحة بالنصوص والصور
    ===================================================================== */
 function buildPage() {
-  // الصور: تتحول إلى متغيرات CSS (--img-paper وغيرها) تستخدمها التصاميم
-  for (const [name, file] of Object.entries(IMAGES)) {
+  for (const [name, file] of Object.entries(IMAGES)) {        // الصور تتحول إلى متغيرات CSS (--img-envelope ...)
     document.documentElement.style.setProperty(`--img-${name}`, `url("${file}")`);
-      $("notices").innerHTML = NOTICES.map(n => `<div class="notice">${ICONS[n.icon] || ""}<span>${safe(n.text)}</span></div>`).join("");   // يرسم الملاحظات
   }
 
-  // الغلاف
-  $("inviter").innerHTML = `<div class="inviter-line">${safe(INVITER.before)}</div>
-    <div class="inviter-name">${safe(INVITER.name)}</div><div class="inviter-line">${safe(INVITER.after)}</div>`;
-  $("openHint").textContent   = TEXT.openHint;
-
+  $("openHint").textContent = TEXT.openHint;                  // عبارة تحت الظرف
 
   // الطبقات: لكل صفحة في PAGES ننشئ صور الطبقات (حتى 4) ونرتبها بحسب رقمها
   for (const [pageId, page] of Object.entries(PAGES)) {
-    const el = $(pageId);                                        // عنصر الصفحة
-    if (!el) continue;                                           // غير موجود: نتجاهله
-    el.style.setProperty("--overlay", page.overlay || 0);        // قوة التعتيم
-    if (page.textColor) el.style.color = page.textColor;         // لون الكتابة إن حددتيه
-    page.layers.slice(0, 4).forEach((layer, i) => {              // أول 4 طبقات فقط
-      const src = typeof layer === "object" ? layer.src : layer; // مسار الصورة (نص أو داخل كائن)
-      if (!src) return;                                          // طبقة فاضية: نتجاهلها
-      const img = document.createElement("img");                 // ننشئ عنصر صورة
-      img.className = "layer";                                   // شكله من CSS (.layer)
+    const el = $(pageId);                                     // عنصر الصفحة
+    if (!el) continue;                                        // غير موجود: نتجاهله
+    el.style.setProperty("--overlay", page.overlay || 0);     // قوة التعتيم
+    if (page.textColor) el.style.color = page.textColor;      // لون الكتابة إن حددتيه
+    page.layers.slice(0, 4).forEach((layer, i) => {           // أول 4 طبقات فقط
+      const src = typeof layer === "object" ? layer.src : layer;   // مسار الصورة (نص أو داخل كائن)
+      if (!src) return;                                       // طبقة فاضية: نتجاهلها
+      const img = document.createElement("img");              // ننشئ عنصر صورة
+      img.className = "layer";                                // شكله من CSS (.layer)
       img.dataset.from = (typeof layer === "object" && layer.from) || "fade";   // اتجاه الدخول (أو ظهور هادئ)
-      img.style.zIndex = (i + 1) * 10;                           // ترتيب الطبقة: 10، 20، 30، 40
-      img.src = src; img.alt = "";                               // المسار ونص بديل فاضي (زينة)
-      img.onerror = () => img.remove();                          // لو الملف غير موجود: نحذف الطبقة
-      el.prepend(img);                                           // نضعها داخل الصفحة
+      img.style.zIndex = (i + 1) * 10;                        // ترتيب الطبقة: 10، 20، 30، 40
+      img.src = src; img.alt = "";                            // المسار ونص بديل فاضي (زينة)
+      img.onerror = () => img.remove();                       // لو الملف غير موجود: نحذف الطبقة
+      el.prepend(img);                                        // نضعها داخل الصفحة
     });
   }
   if (SMALL_FLOWER) $("smallFlower").src = SMALL_FLOWER; else $("smallFlower").style.display = "none";   // الوردة الصغيرة
-  setTimeout(() => $("cover").classList.add("visible"), 150);    // يشغّل ظهور طبقات صفحة الظرف
+  setTimeout(() => $("cover").classList.add("visible"), 150); // يشغّل ظهور طبقات صفحة الظرف
 
   // قسم الدعوة
   $("bismillah").textContent   = TEXT.bismillah;
@@ -466,11 +425,13 @@ function buildPage() {
       <div class="event-body"><span class="event-title">${safe(item.title)}</span><span class="event-text">${safe(item.text)}</span></div>
     </div>`).join("");
 
-  const place = WEDDING.venue + (WEDDING.city ? "، " + WEDDING.city : "");
-  const map   = WEDDING.mapUrl ? `<a class="pill" href="${safe(WEDDING.mapUrl)}" target="_blank" rel="noopener">${TEXT.mapButton}</a>` : "";
+  const place = WEDDING.venue + (WEDDING.city ? "، " + WEDDING.city : "");   // اسم القاعة والمدينة
+  const map   = WEDDING.mapUrl ? `<a class="pill" href="${safe(WEDDING.mapUrl)}" target="_blank" rel="noopener">${TEXT.mapButton}</a>` : "";   // زر الموقع
   $("venue").innerHTML = `<strong>${safe(place)}</strong>${map}`;
 
-  $("closingNames").textContent = `${WEDDING.bride} ${WEDDING.joiner} ${WEDDING.groom}`;
+  $("notices").innerHTML = NOTICES.map(n => `<div class="notice">${ICONS[n.icon] || ""}<span>${safe(n.text)}</span></div>`).join("");   // الملاحظات أسفل المراسم
+
+  $("closingNames").textContent = `${WEDDING.bride} ${WEDDING.joiner} ${WEDDING.groom}`;   // أسماء الرسالة الأخيرة
 }
 
 
@@ -478,7 +439,7 @@ function buildPage() {
    4) فتح الظرف
    ===================================================================== */
 function openInvitation() {
-    if (!$("cover").classList.contains("ready")) return;        // لا نفتح الظرف قبل ظهور اسم الداعي
+  if (!$("cover").classList.contains("ready")) return;        // لا نفتح الظرف قبل ظهور اسم الداعي
   $("cover").classList.add("is-opening");                     // تشغيل حركة الفتح
   setTimeout(() => {
     $("cover").hidden = true;                                 // إخفاء الغلاف نهائياً
@@ -488,92 +449,24 @@ function openInvitation() {
   }, 1000);
 }
 function setupCover() {
-  ["envelope", "openHint"].forEach(id => $(id).onclick = openInvitation);          // الضغط على الظرف أو الزر
+  ["envelope", "openHint"].forEach(id => $(id).onclick = openInvitation);          // الضغط على الظرف أو العبارة
   $("envelope").onkeydown = e => { if (e.key === "Enter" || e.key === " ") openInvitation(); };
 }
 
 
 /* =====================================================================
-   5) الضيف: الترحيب، الأزرار، الكود، الرسالة الأخيرة
+   5) الداعي والضيف: الأسماء، الأزرار، الكود، الرسالة الأخيرة
    ===================================================================== */
-// function showGreeting(guest) {                                // اسم المدعو أعلى الدعوة
-//   $("greeting").innerHTML = guest
-//     ? `<div class="dear">${TEXT.dearGuest}</div><div class="guest-name" dir="auto">${safe(guest.name)}</div>`
-//     : `<div class="dear">${TEXT.welcome}</div>`;
-// }
-
-// function qrBlock() {                                          // صورة الكود + الملاحظة تحتها
-//   return `<div class="qr-box">
-//     <div class="qr-title">${TEXT.qrTitle}</div>
-//     <img src="${IMAGES.qr}" alt="" onerror="this.style.display='none'">
-//     <p class="qr-note">${TEXT.qrNote}</p></div>`;
-// }
-
-// function showClosing(status) {                                // الرسالة الأخيرة حسب حالة الضيف
-//   $("closingText").textContent = STATUS_NO.includes(status) ? TEXT.closingDeclined : TEXT.closingWaiting;
-// }
-
-// function showReply(guest, message) {                          // يرسم قسم التأكيد حسب حالة الضيف
-//   const box = $("replyBox");
-//   showClosing(guest && guest.status);
-
-//   if (!guest) {                                               // رابط غير صحيح أو بدون رمز
-//     box.innerHTML = `<p class="small">${safe(message || TEXT.needLink)}</p>`;
-//     return;
-//   }
-//   const seats = guest.seats > 1 ? `<div class="seats">${TEXT.seats(guest.seats)}</div>` : "";
-
-//   if (STATUS_YES.includes(guest.status)) {                    // أكّد الحضور → رسالة شكر + الكود
-//     box.innerHTML = `<div class="fade-in">${seats}
-//       <div class="serif result" style="color:var(--sage)">${TEXT.thanksYes}</div>
-//       <p class="small">${TEXT.received} <button class="link" id="changeBtn">${TEXT.change}</button></p>
-//       ${qrBlock()}</div>`;
-//   } else if (STATUS_NO.includes(guest.status)) {              // اعتذر
-//     box.innerHTML = `<div class="fade-in"><div class="serif result">${TEXT.thanksNo}</div>
-//       <p class="small">${TEXT.thankYou} <button class="link" id="changeBtn">${TEXT.change}</button></p></div>`;
-//   } else {                                                    // لسا ما رد → الزرين
-//     box.innerHTML = `${seats}<div class="buttons">
-//         <button class="btn btn-yes" data-answer="yes">${TEXT.yesButton}</button>
-//         <button class="btn btn-no"  data-answer="no">${TEXT.noButton}</button></div>`;
-//   }
-//   box.querySelectorAll("[data-answer]").forEach(b => b.onclick = () => sendAnswer(guest, b.dataset.answer));
-//   const change = $("changeBtn");
-//   if (change) change.onclick = () => showReply({ ...guest, status: "Pending" });
-// }
-
-// async function sendAnswer(guest, answer) {                    // يرسل الرد إلى Google Sheet
-//   const box = $("replyBox");
-//   box.querySelectorAll("button").forEach(b => b.disabled = true);
-//   try {
-//     const data = await (await fetch(`${API_URL}?action=reply&g=${encodeURIComponent(guestCode)}&r=${answer}`)).json();
-//     if (!data.ok) throw new Error("rejected");
-//     showReply({ ...guest, status: data.status });
-//   } catch (err) {
-//     box.insertAdjacentHTML("beforeend", `<p class="small">${TEXT.error}</p>`);
-//     box.querySelectorAll("button").forEach(b => b.disabled = false);
-//   }
-// }
-
-// async function loadGuest() {                                  // يبحث عن الضيف في الشيت برمزه
-//   showGreeting(null);
-//   if (!guestCode) { showReply(null); return; }
-//   try {
-//     const data = await (await fetch(`${API_URL}?action=get&g=${encodeURIComponent(guestCode)}`)).json();
-//     if (data.ok) { showGreeting(data); showReply(data); } else showReply(null, TEXT.notFound);
-//   } catch (err) { showReply(null, TEXT.tryLater); }
-// }
-
-const urlInviter = new URLSearchParams(location.search).get("i") || "";   // اسم الداعي من الرابط (يظهر فوراً)
-let inviterFromSheet = false;                                 // هل وصل الاسم من الشيت؟
+let inviterFromSheet = false;                                 // هل وصل اسم الداعي من الشيت؟
 function showInviter(inv, fromSheet = true) {                 // inv = عبارات الداعي | fromSheet=false = قادم من الرابط (مؤقت)
-  if (inviterFromSheet) return;                               // الاسم المؤكد من الشيت ظهر: لا نغيّره
+  if (inviterFromSheet) return;                               // اسم الشيت ظهر: لا نغيّره
   if (!inv && $("inviter").classList.contains("show")) return;   // لا شيء جديد وهناك اسم ظاهر: نتركه
-  if (fromSheet && inv && (inv.name || inv.before || inv.after)) inviterFromSheet = true;
-  const x = inv || {};
+  if (fromSheet && inv && (inv.name || inv.before || inv.after)) inviterFromSheet = true;   // وصلنا بيانات الشيت
+  const x = inv || {};                                        // أي حقل فاضي يأخذ الافتراضي من INVITER
   $("inviter").innerHTML = `<div class="inviter-line">${safe(x.before || INVITER.before)}</div>
     <div class="inviter-name">${safe(x.name || INVITER.name)}</div><div class="inviter-line">${safe(x.after || INVITER.after)}</div>`;
-  $("inviter").classList.add("show");
-    $("cover").classList.add("ready");                          // اسم الداعي ظهر: يسمح بفتح الظرف
+  $("inviter").classList.add("show");                         // يظهر الاسم
+  $("cover").classList.add("ready");                          // ويسمح بفتح الظرف
 }
 if (urlInviter) showInviter({ name: urlInviter }, false);     // يظهر فوراً من الرابط
 setTimeout(() => showInviter(), 4000);                        // لو ما فيه اسم بالرابط وتأخر الشيت: الاسم الافتراضي
@@ -597,8 +490,8 @@ function showClosing(status) {                                // الرسالة 
 function showReply(guest, message) {                          // يرسم قسم التأكيد حسب حالة الضيف
   const box = $("replyBox");
   showClosing(guest && guest.status);
-  if (!guest) { box.innerHTML = `<p class="small">${safe(message || TEXT.needLink)}</p>`; return; }
-  const seats = guest.seats > 1 ? `<div class="seats">${TEXT.seats(guest.seats)}</div>` : "";
+  if (!guest) { box.innerHTML = `<p class="small">${safe(message || TEXT.needLink)}</p>`; return; }   // رابط غير صحيح
+  const seats = guest.seats > 1 ? `<div class="seats">${TEXT.seats(guest.seats)}</div>` : "";         // عدد الأشخاص
 
   if (STATUS_YES.includes(guest.status)) {                    // حضر: الكود وجملته فقط
     box.innerHTML = `<div class="fade-in">${qrBlock()}</div>`;
@@ -610,21 +503,21 @@ function showReply(guest, message) {                          // يرسم قسم
         <button class="btn btn-yes" data-answer="yes">${TEXT.yesButton}</button>
         <button class="btn btn-no"  data-answer="no">${TEXT.noButton}</button></div>`;
   }
-  box.querySelectorAll("[data-answer]").forEach(b => b.onclick = () => sendAnswer(guest, b.dataset.answer));
-  const change = $("changeBtn");
+  box.querySelectorAll("[data-answer]").forEach(b => b.onclick = () => sendAnswer(guest, b.dataset.answer));   // ربط الزرّين
+  const change = $("changeBtn");                              // رابط تغيير الرد (للمعتذر)
   if (change) change.onclick = () => showReply({ ...guest, status: "Pending" });
 }
 
 async function sendAnswer(guest, answer) {                    // يرسل الرد إلى Google Sheet
   const box = $("replyBox");
-  box.querySelectorAll("button").forEach(b => b.disabled = true);
+  box.querySelectorAll("button").forEach(b => b.disabled = true);   // تعطيل الأزرار أثناء الإرسال
   try {
     const data = await (await fetch(`${API_URL}?action=reply&g=${encodeURIComponent(guestCode)}&r=${answer}`)).json();
-    if (!data.ok) throw new Error("rejected");
-    showReply({ ...guest, status: data.status });
+    if (!data.ok) throw new Error("rejected");                // الشيت رفض الطلب
+    showReply({ ...guest, status: data.status });             // عرض الحالة الجديدة
   } catch (err) {
-    box.insertAdjacentHTML("beforeend", `<p class="small">${TEXT.error}</p>`);
-    box.querySelectorAll("button").forEach(b => b.disabled = false);
+    box.insertAdjacentHTML("beforeend", `<p class="small">${TEXT.error}</p>`);   // رسالة خطأ
+    box.querySelectorAll("button").forEach(b => b.disabled = false);             // إعادة تفعيل الأزرار
   }
 }
 
@@ -637,19 +530,20 @@ async function loadGuest() {                                  // يبحث عن �
   }
   try {
     const data = await (await fetch(`${API_URL}?action=get&g=${encodeURIComponent(guestCode)}`)).json();
-    if (data.ok) { showGreeting(data); showReply(data); showInviter(data.inviter); }
-    else { showReply(null, TEXT.notFound); showInviter(); }
-  } catch (err) { showReply(null, TEXT.tryLater); showInviter(); }
+    if (data.ok) { showGreeting(data); showReply(data); showInviter(data.inviter); }   // الضيف موجود
+    else { showReply(null, TEXT.notFound); showInviter(); }                           // رمز غير موجود
+  } catch (err) { showReply(null, TEXT.tryLater); showInviter(); }                    // مشكلة اتصال
 }
+
 
 /* =====================================================================
    6) العدّ التنازلي
    ===================================================================== */
 function updateCountdown() {
   const diff = new Date(WEDDING.dateTime) - new Date();       // الفرق بالملي ثانية
-  if (diff <= 0) { $("countdownRow").textContent = TEXT.countdownDone; return; }
-  const s = Math.floor(diff / 1000);
-  const values = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60]; // أيام، ساعات، دقائق، ثواني
+  if (diff <= 0) { $("countdownRow").textContent = TEXT.countdownDone; return; }   // الموعد جاء
+  const s = Math.floor(diff / 1000);                          // الفرق بالثواني
+  const values = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60];   // أيام، ساعات، دقائق، ثواني
   $("countdownRow").innerHTML = values.map((v, i) =>
     `<div class="count-item"><span class="count-num">${toArabicDigits(v)}</span><span class="count-lbl">${TEXT.units[i]}</span></div>`).join("");
 }
@@ -659,26 +553,26 @@ function updateCountdown() {
    7) التمرير السلس والحركة
    ===================================================================== */
 function startScrollEffects() {
-  const dots = [...document.querySelectorAll("#dots a")];
+  const dots = [...document.querySelectorAll("#dots a")];     // النقاط الجانبية
   dots.forEach(dot => dot.onclick = e => { e.preventDefault(); document.querySelector(dot.getAttribute("href")).scrollIntoView({ behavior: "smooth" }); });
 
   // لما يظهر قسم على الشاشة: تظهر عناصره بحركة وتتفعّل نقطته
   const watcher = new IntersectionObserver(entries => entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add("visible");
-    dots.forEach(d => d.classList.toggle("active", d.getAttribute("href") === "#" + entry.target.id));
+    if (!entry.isIntersecting) return;                        // تجاهل القسم غير الظاهر
+    entry.target.classList.add("visible");                    // تفعيل ظهور القسم
+    dots.forEach(d => d.classList.toggle("active", d.getAttribute("href") === "#" + entry.target.id));   // تفعيل النقطة الحالية
   }), { threshold: 0.2 });
-  document.querySelectorAll(".section").forEach(s => watcher.observe(s));
+  document.querySelectorAll(".section").forEach(s => watcher.observe(s));   // مراقبة كل الأقسام
 }
 
 
 /* =====================================================================
    8) التشغيل
    ===================================================================== */
-buildPage();
-setupCover();
-loadGuest();
-updateCountdown();
+buildPage();                          // 1) عبّي الصفحة
+setupCover();                         // 2) فعّل الظرف
+loadGuest();                          // 3) اجلب بيانات الضيف من الشيت
+updateCountdown();                    // 4) شغّل العدّ التنازلي
 setInterval(updateCountdown, 1000);   // تحديث العدّ كل ثانية
 </script>
 </body>
